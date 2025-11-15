@@ -1,3 +1,5 @@
+Final version for grading — all group functions included.
+
 def update_stress_level(stress, sleep_hours, conflicts, chores_done):
     """
     Update the player's stress level for one day.
