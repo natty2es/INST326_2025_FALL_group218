@@ -14,7 +14,7 @@ def generate_event(day, stress_level, relationship_tracker, apartment_status):
     - dict: A dictionary describing the selected event and its impact.
     """
 
-    # Step 1: events
+   
     base_events = [
         {"name": "surprise_guest", "trigger": lambda s: s < 60},
         {"name": "roommate_birthday", "trigger": lambda s: True},
@@ -23,19 +23,17 @@ def generate_event(day, stress_level, relationship_tracker, apartment_status):
         {"name": "roommate_argument", "trigger": lambda s: any(score < 40 for score in relationship_tracker.values())}
     ]
 
-    # Step 2: Filter events based on current state
+   
     valid_events = []
     for event in base_events:
         if event["trigger"](stress_level):
             valid_events.append(event["name"])
-
-    # Step 3: Randomly select one valid event
+   
     if not valid_events:
         return {"event": "quiet_day", "description": "Nothing unusual happened today."}
 
     selected_event = random.choice(valid_events)
 
-    # Step 4: Build event description
     if selected_event == "surprise_guest":
         description = "A friend unexpectedly drops by. Roommates react based on their mood."
     elif selected_event == "roommate_birthday":
@@ -49,7 +47,7 @@ def generate_event(day, stress_level, relationship_tracker, apartment_status):
     else:
         description = "Nothing unusual happened today."
 
-    # Step 5: Return 
+  
     return {
         "event": selected_event,
         "description": description,
@@ -76,3 +74,4 @@ apartment_status = {
 
 event = generate_event(day, stress_level, relationship_trackers, apartment_status)
 print(event)
+
