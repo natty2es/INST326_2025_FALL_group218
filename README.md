@@ -1,36 +1,34 @@
-Final version for grading — all group functions included.
+# Roommate Survival Game (The game players based on the project)
 
-def update_stress_level(stress, sleep_hours, conflicts, chores_done):
-    """
-    Update the player's stress level for one day.
+## Overview
+This project is a command-line demo game where the player lives with quirky roommates and makes daily decisions to keep the peace. Choices affect roommate relationships, stress level, and random events that change the “vibe” of the apartment. The goal is to survive the week/semester without getting kicked out or burning out.
 
-    Parameters:
-        stress (int): Current stress level (0–100).
-        sleep_hours (int): Hours of sleep the player got (0–12).
-        conflicts (list[int]): Conflict intensities throughout the day (e.g., [3, 5, 1]).
-        chores_done (bool): Whether the player completed their chores today.
+---
 
-    Returns:
-        int: The updated stress level (0–100).
-    """
+## Repository Files (Purpose of Each File)
 
-    # Sleep impact
-    if sleep_hours >= 8:
-        stress -= 10
-    elif sleep_hours >= 5:
-        stress -= 5
-    else:
-        stress += 10
+- **game.py**  
+  Main playable demo. Connects relationship updates, stress updates, decision balancing, and random events into a single daily game loop.
 
-    # Conflict impact
-    for intensity in conflicts:
-        stress += intensity
+- **update_stress_level.py**  
+  Contains `update_stress_level(...)`, the stress management algorithm that updates player stress based on sleep, conflicts, and chores.
 
-    # Chore impact
-    if not chores_done:
-        stress += 5
+- **update_relationships.py**  
+  Contains `update_relationships(...)`, the relationship dynamics algorithm that updates each roommate’s relationship score using moods, traits, the player’s action, and recent history.
 
-    # Clamp to valid range
-    stress = max(0, min(100, stress))
+- **generate_event.py**  
+  Contains `generate_event(...)`, the random event generator that selects context-aware events (e.g., guests, bills, arguments, inspections).
 
-    return stress
+- **decision_impact.py** (or your actual filename)  
+  Contains `balance_decision_impact(...)`, the decision impact balancing algorithm that prevents “spamming” one strategy and introduces fair trade-offs.
+
+- **group_members.txt**  
+  List of group members and (optionally) roles.
+
+---
+
+## How to Run (Command Line)
+
+1. Open a terminal and go into the repository folder:
+   ```bash
+   cd path/to/INST326_2025_FALL_group218
