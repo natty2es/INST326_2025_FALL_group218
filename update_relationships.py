@@ -1,4 +1,19 @@
 def update_relationships(roommates, action, history):
+    """
+    Update roommate relationship values based on the player's action, roommate moods/traits,
+    and recent action history.
+
+    Primary author: Sean Nehrebecky
+    Technique claimed here: dictionary iteration + trait-based modifiers
+
+    Parameters:
+        roommates (dict): roommate_name -> state dict (relationship, mood, traits).
+        action (dict): The player's action dict (type, target, magnitude).
+        history (list[dict]): Recent actions used for trend/pattern influence.
+
+    Returns:
+        dict: Updated roommates dict.
+    """
     base = {
         'help_chores': 0.15,
         'listen': 0.10,
