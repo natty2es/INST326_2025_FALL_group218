@@ -1,22 +1,22 @@
 def balance_decision_impact(action, history, stress_level, roommates):
+   def balance_decision_impact(action, history, stress_level, roommates):
     """
-    Balance the impact of the current decision so that repeated strategies
-    have diminishing returns and risky choices have extra trade-offs.
+    Apply balancing rules so that repeated strategies have diminishing returns and
+    risky choices create meaningful trade-offs.
+
+    Primary author: Nathaniel Mekonnen
+    Technique claimed here:pattern detection over a sliding window
 
     Parameters:
-        action (dict): Current action, e.g. {"type": "help_chores", "target": "Mike", "magnitude": 1.0}
-        history (list): List of previous actions (each an action dict).
-        stress_level (int): Current stress level before applying today's effects (0–100).
-        roommates (dict): Roommate data with relationship scores, e.g.
-                          {
-                              "Mike": {"relationship": 60, "mood": "neutral"},
-                              "Riley": {"relationship": 75, "mood": "happy"}
-                          }
+        action (dict): Current action dictionary.
+        history (list[dict]): Past actions (including current, if appended before calling).
+        stress_level (int): Current stress level (0–100) before today's update.
+        roommates (dict): Roommate state dicts (relationship, mood, traits).
 
     Returns:
         dict: {
             "stress_delta": int,
-            "relationship_deltas": {roommate_name: int, ...}
+            "relationship_deltas": dict[str, int]
         }
     """
 
