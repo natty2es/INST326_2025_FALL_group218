@@ -1,3 +1,13 @@
+"""
+Roommate Survival Game (demo)
+
+Primary author: The whole group
+
+This file wires together the major systems (stress, relationships, events, and decision balancing)
+into a playable command-line demo.
+"""
+
+
 import random
 from update_stress_level import update_stress_level
 from update_relationships import update_relationships
