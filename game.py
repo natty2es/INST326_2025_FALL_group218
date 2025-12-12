@@ -36,6 +36,16 @@ history = []
 # ----------------------------------------------------------
 
 def choose_action():
+    """
+    Prompt the player to choose one action for the day and return it as an action dictionary.
+
+    Primary author: Miguel Saagong
+    Technique claimed: input validation
+
+    Returns:
+        dict: An action dict with keys like "type", "target", and "magnitude".
+    """
+
     print("\nChoose an action:")
     print("1. Help with chores")
     print("2. Listen to a roommate")
@@ -70,7 +80,18 @@ def choose_action():
 # ----------------------------------------------------------
 
 def update_mood(relationship_score: int) -> str:
-    """Return a mood string based on a 0–100 relationship score."""
+    """Return a mood string based on a 0–100 relationship score.
+    Convert a relationship score into a mood label used for display and event logic.
+
+    Primary author: Nathaniel Mekonnen
+    Technique claimed here: threshold mapping
+    Parameters:
+        relationship_score (int or float): Relationship value (typically 0–100 for display).
+
+    Returns:
+        str: One of {"tense", "neutral", "happy"}.
+    """
+
     if relationship_score <= 25:
         return "tense"
     elif relationship_score <= 60:
@@ -84,6 +105,18 @@ def update_mood(relationship_score: int) -> str:
 # ----------------------------------------------------------
 
 def show_status(day, stress_level, roommates):
+    """
+    Print a readable daily summary of the current game state.
+
+    Primary author: Yawo Tchatchou
+    Technique(s) claimed here: f-strings
+
+    Parameters:
+        day (int): Current day number.
+        stress_level (int): Player stress (0–100).
+        roommates (dict): Mapping roommate_name -> state dict (relationship, mood, traits).
+    """
+
     print("\n--------------------------------")
     print(f"DAY {day} SUMMARY")
     print("--------------------------------")
@@ -100,6 +133,18 @@ def show_status(day, stress_level, roommates):
 
 def play_game(days=7):
     global stress_level, roommates, apartment_status
+    """
+    Run the main game loop for a fixed number of days.
+
+    Primary author: Sean Nehrebecky
+    Technique(s) claimed here: modular integration 
+    Parameters:
+        days (int): Number of in-game days to simulate.
+
+    Side effects:
+        Reads input from the terminal and prints game output each day.
+    """
+
 
     # 1. Player name
     player_name = input("Enter your name: ").strip()
