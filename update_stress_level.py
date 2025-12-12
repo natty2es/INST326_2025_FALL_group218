@@ -1,16 +1,20 @@
 def update_stress_level(stress, sleep_hours, conflicts, chores_done):
     """
-    Update the player's stress level for one day.
+    Update the player's stress level for one day based on sleep, conflicts, and chores.
+
+    Primary author: Nathaniel Mekonnen
+    Technique claimed here:clamping + iteration over list
 
     Parameters:
         stress (int): Current stress level (0–100).
-        sleep_hours (int): Hours of sleep the player got (0–12).
-        conflicts (list): Conflict intensities throughout the day (e.g., [3, 5, 1]).
-        chores_done (bool): Whether the player completed their chores today.
+        sleep_hours (int): Hours of sleep (0–12).
+        conflicts (list[int]): Conflict intensity values for the day.
+        chores_done (bool): True if chores were completed, else False.
 
     Returns:
-        int: The updated stress level (0–100).
+        int: Updated stress level (0–100).
     """
+
 
   
     if sleep_hours >= 8:
