@@ -2,16 +2,19 @@ import random
 
 def generate_event(day, stress_level, relationship_tracker, apartment_status):
     """
-    Generates a random, context-aware event based on the current game state.
+    Generate a random, context-aware event that fits the current game state.
+
+    Primary author: Miguel Saagong
+    Technique claimed here:lambda triggers + filtering list
 
     Parameters:
-    - day (int): Current day in the semester.
-    - stress_level (int): Player's current stress level (0–100).
-    - relationship_scores (dict): Mapping of roommate names to relationship scores (0–100).
-    - apartment_status (dict): Dictionary with keys like 'broken_items', 'upcoming_bills', 'roommate_moods'.
+        day (int): Current day number in the semester.
+        stress_level (int): Player stress (0–100).
+        relationship_tracker (dict[str, int]): roommate_name -> relationship score (0–100).
+        apartment_status (dict): Game state info like broken items, bills, roommate moods.
 
     Returns:
-    - dict: A dictionary describing the selected event and its impact.
+        dict: Dictionary describing the selected event and its description.
     """
 
     base_events = [
@@ -100,3 +103,4 @@ apartment_status = {
 
 event = generate_event(day, stress_level, relationship_trackers, apartment_status)
 print(event)
+
